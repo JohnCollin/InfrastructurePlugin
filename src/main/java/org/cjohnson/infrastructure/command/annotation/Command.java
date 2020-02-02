@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface Command {
-	String[] aliases();
-	
-	String permission();
+  String[] aliases();
+  
+  String permission();
 }
