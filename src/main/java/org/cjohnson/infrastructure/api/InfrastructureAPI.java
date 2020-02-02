@@ -29,20 +29,57 @@ import org.cjohnson.infrastructure.command.CommandFramework;
 
 import java.util.logging.Logger;
 
+/**
+ * The InfrastructureAPI is a singleton class that functions as a way for the plugin to share important data.
+ *
+ * @since 0.1.0-ALPHA
+ */
 public class InfrastructureAPI {
   
+  /**
+   * Boolean flag that shows if the API has been initialized or not.
+   *
+   * @since 0.1.0-ALPHA
+   */
   private static boolean initialized;
   
+  /**
+   * Singleton instance of the InfrastructureAPI.
+   *
+   * @since 0.1.0-ALPHA
+   */
   private static InfrastructureAPI instance;
   
+  /**
+   * The Infrastructure Plugin Class.
+   *
+   * @since 0.1.0-ALPHA
+   */
   private static Infrastructure infrastructurePlugin;
   
+  /**
+   * Infrastructure's Command Framework and Command Registry
+   *
+   * @since 0.1.0-ALPHA
+   */
   private static CommandFramework commandFramework;
   
+  /**
+   * InfrastructureAPI Singleton Constructor
+   *
+   * @since 0.1.0-ALPHA
+   */
   private InfrastructureAPI() {
     initialized = false;
   }
   
+  /**
+   * Singleton getInstance() method with first-time initialization.
+   *
+   * @return Singleton instance of InfrastructureAPI.
+   *
+   * @since 0.1.0-ALPHA
+   */
   public static InfrastructureAPI getInstance() {
     if(instance == null) {
       instance = new InfrastructureAPI();
@@ -51,6 +88,16 @@ public class InfrastructureAPI {
     return instance;
   }
   
+  /**
+   * Initialization method called by the Infrastructure Plugin Class on Initialization of the Plugin.
+   *
+   * @param infrastructure The Plugin Object
+   * @param framework The CommandFramework and Command Registry
+   *
+   * @return Boolean flag to signal whether the API was initialized correctly.
+   *
+   * @since 0.1.0-ALPHA
+   */
   public boolean initialize(Infrastructure infrastructure, CommandFramework framework) {
     if(initialized) {
       return false;
@@ -63,18 +110,46 @@ public class InfrastructureAPI {
     return true;
   }
   
+  /**
+   * Getter for the boolean initialized flag.
+   *
+   * @return The boolean initialized flag
+   *
+   * @since 0.1.0-ALPHA
+   */
   public boolean isInitialized() {
     return initialized;
   }
   
+  /**
+   * Getter for the Infrastructrue Plugin Object
+   *
+   * @return The Infrastructure Plugin Object
+   *
+   * @since 0.1.0-ALPHA
+   */
   public Infrastructure getInfrastructurePlugin() {
     return infrastructurePlugin;
   }
   
+  /**
+   * Getter for the Bukkit Plugin Logger.
+   *
+   * @return Bukkit Plugin Logger.
+   *
+   * @since 0.1.0-ALPHA
+   */
   public Logger getPluginLogger() {
     return infrastructurePlugin.getLogger();
   }
   
+  /**
+   * Getter for the Infrastructure Command Framework and Registry
+   *
+   * @return Infrastructure Command Framework and Registry
+   *
+   * @since 0.1.0-ALPHA
+   */
   public CommandFramework getCommandFramework() {
     return commandFramework;
   }
