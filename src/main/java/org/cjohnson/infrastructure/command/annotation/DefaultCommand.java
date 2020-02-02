@@ -29,6 +29,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * The DefaultCommand Annotation is for labeling a command method
+ * as the default command method.
+ *
+ * @since 0.1.0-ALPHA
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface DefaultCommand { }

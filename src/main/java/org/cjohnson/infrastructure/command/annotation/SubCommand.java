@@ -29,10 +29,30 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * The SubCommand Annotation is used for storing information
+ * about the SubCommand Method that it is attached to
+ *
+ * @since 0.1.0-ALPHA
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface SubCommand {
+  /**
+   * The subcommand aliases
+   *
+   * @return The subcommand aliases
+   *
+   * @since 0.1.0-ALPHA
+   */
   String[] aliases();
   
+  /**
+   * The subcommand required permission
+   *
+   * @return The required permission
+   *
+   * @since 0.1.0-ALPHA
+   */
   String permission();
 }

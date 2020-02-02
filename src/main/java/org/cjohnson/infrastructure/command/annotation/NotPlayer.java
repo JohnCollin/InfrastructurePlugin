@@ -29,6 +29,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * The NotPlayer Annotation is for labeling a command method as the
+ * error case method for when the CommandSender is not instanceof Player.
+ *
+ * @since 0.1.0-ALPHA
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface NotPlayer { }

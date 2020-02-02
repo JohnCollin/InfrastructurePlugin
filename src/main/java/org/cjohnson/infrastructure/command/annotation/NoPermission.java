@@ -29,6 +29,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * The NoPermission Annotation is for labeling a command method as the
+ * error case method for when insufficient permission are present.
+ *
+ * @since 0.1.0-ALPHA
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface NoPermission { }
