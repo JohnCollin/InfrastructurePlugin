@@ -33,11 +33,30 @@ import org.cjohnson.infrastructure.command.annotation.*;
 import org.cjohnson.infrastructure.item.ItemUtilities;
 import org.cjohnson.infrastructure.message.MessageUtilities;
 
+/**
+ * The CommandRepair command class is used as a command class for the
+ * in-game /repair command.
+ *
+ * @since 0.1.0-ALPHA
+ */
 @Command(aliases = {"repair", "fix", "efix", "erepair"}, permission = "infrastructure.repair")
 public class CommandRepair {
   
+  /**
+   * Default Constructor for CommandRepair
+   *
+   * @since 0.1.0-ALPHA
+   */
   public CommandRepair() {}
   
+  /**
+   * The handRepairCommand() method is the default command case and the case when the
+   * argument [hand] is used.
+   *
+   * @param subCommand The subcommand annotation passed by the CommandFramework
+   * @param sender The CommandSender passed by the Bukkit API
+   * @param args The command arguments passed by the Bukkit API
+   */
   @DefaultCommand
   @SubCommand(aliases = {"hand"}, permission = "infrastructure.repair")
   public void handRepairCommand(SubCommand subCommand, CommandSender sender, String[] args) {
@@ -61,6 +80,14 @@ public class CommandRepair {
     MessageUtilities.displayInfoMessage(player, "Your " + itemStack.getType().toString() + " has been repaired.");
   }
   
+  /**
+   * The allRepairCommand() method is the case when the
+   * argument [all] is used.
+   *
+   * @param subCommand The subcommand annotation passed by the CommandFramework
+   * @param sender The CommandSender passed by the Bukkit API
+   * @param args The command arguments passed by the Bukkit API
+   */
   @SubCommand(aliases = {"all"}, permission = "infrastructure.repair.all")
   public void allRepairCommand(SubCommand subCommand, CommandSender sender, String[] args) {
     // Get the contents of all the items in an inventory
@@ -88,11 +115,27 @@ public class CommandRepair {
     MessageUtilities.displayInfoMessage(player, "All of your items have been repaired.");
   }
   
+  /**
+   * The noPermssion() method is the case when the sender has
+   * no permission to run the command.
+   *
+   * @param subCommand The subcommand annotation passed by the CommandFramework
+   * @param sender The CommandSender passed by the Bukkit API
+   * @param args The command arguments passed by the Bukkit API
+   */
   @NoPermission
   public void noPermission(SubCommand subCommand, CommandSender sender, String[] args) {
     MessageUtilities.displayErrorMessage(sender, "You do not have permission to perform this command.");
   }
   
+  /**
+   * The notPlayer() method is the case when the sender is
+   * not an instanceof player.
+   *
+   * @param subCommand The subcommand annotation passed by the CommandFramework
+   * @param sender The CommandSender passed by the Bukkit API
+   * @param args The command arguments passed by the Bukkit API
+   */
   @NotPlayer
   public void notPlayer(SubCommand subCommand, CommandSender sender, String[] args) {
     MessageUtilities.displayErrorMessage(sender, "You must be a player to perform this command.");
