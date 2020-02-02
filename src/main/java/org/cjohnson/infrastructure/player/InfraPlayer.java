@@ -26,12 +26,34 @@ package org.cjohnson.infrastructure.player;
 
 import org.bukkit.entity.Player;
 
+/**
+ * The Infrastructure Player container class that contains more Infrastructrue Data.
+ *
+ * @since 0.1.0-ALPHA
+ */
 public class InfraPlayer {
   
+  /**
+   * The Bukkit API Player Object
+   *
+   * @since 0.1.0-ALPHA
+   */
   private Player player;
   
+  /**
+   * The flag that determines if players can receive private messages
+   *
+   * @since 0.1.0-ALPHA
+   */
   private boolean messageToggled;
   
+  /**
+   * InfraPlayer standard on-join constructor
+   *
+   * @param player The Bukkit API Player Object
+   *
+   * @since 0.1.0-ALPHA
+   */
   public InfraPlayer(Player player) {
   
   }

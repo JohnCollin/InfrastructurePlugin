@@ -31,9 +31,24 @@ import org.cjohnson.infrastructure.command.player.item.CommandRepair;
 
 import java.text.MessageFormat;
 
+/**
+ * The Infrastructure Plugin Class, extending the JavaPlugin class from the Bukkit API
+ *
+ * @since 0.1.0-ALPHA
+ */
 public class Infrastructure extends JavaPlugin {
   
+  /**
+   * The official raw plugin name, used in console or official messaging.
+   *
+   * @since 0.1.0-ALPHA
+   */
   public static final String PLUGIN_NAME = "Infrastructure";
+  /**
+   * The official raw plugin version, used in console or official messaging.
+   *
+   * @since 0.1.0-ALPHA
+   */
   public static final String PLUGIN_VERSION = "0.1.0-ALPHA";
   
   @Override
@@ -62,6 +77,11 @@ public class Infrastructure extends JavaPlugin {
     handleReloads();
   }
   
+  /**
+   * The method that will handle any lost data on reloads
+   *
+   * @since 0.1.0-ALPHA
+   */
   private void handleReloads() { }
   
   @Override
