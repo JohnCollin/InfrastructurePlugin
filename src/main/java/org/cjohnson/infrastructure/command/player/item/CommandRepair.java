@@ -24,7 +24,6 @@
 
 package org.cjohnson.infrastructure.command.player.item;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -42,42 +41,50 @@ public class CommandRepair {
   @DefaultCommand
   @SubCommand(aliases = {"hand"}, permission = "infrastructure.repair")
   public void handRepairCommand(SubCommand subCommand, CommandSender sender, String[] args) {
-    //Get necessary objects
+    // Get the ItemStack in the player's hand,
+    // through getting the PlayerInventory first.
     Player player = (Player) sender;
     PlayerInventory playerInventory = player.getInventory();
     ItemStack itemStack = playerInventory.getItemInMainHand();
     
+    // Air buffer (You cannot repair air)
     if(itemStack.getType() == Material.AIR) {
       MessageUtilities.displayInfoMessage(player, "You cannot repair air.");
       
       return;
     }
     
-    //Repair
+    // Repair the Item in Main Hand using the ItemUtilties
     playerInventory.setItemInMainHand(ItemUtilities.setItemDamage(itemStack, (short) 0));
     
-    //Log to Player
+    // Tell the player that their item has been repaired.
     MessageUtilities.displayInfoMessage(player, "Your " + itemStack.getType().toString() + " has been repaired.");
   }
   
   @SubCommand(aliases = {"all"}, permission = "infrastructure.repair.all")
   public void allRepairCommand(SubCommand subCommand, CommandSender sender, String[] args) {
-    //Get necessary objects
+    // Get the contents of all the items in an inventory
+    // through the PlayerInventory object, as an array
+    // of ItemStacks.
     Player player = (Player) sender;
     PlayerInventory playerInventory = player.getInventory();
     ItemStack[] itemStacks = playerInventory.getContents();
     
-    //Repair
+    // Iterate through the contents of the inventory
     for(int slot = 0; slot < itemStacks.length; slot++) {
+      // Air buffer (You cannot repair air)
       if(itemStacks[slot] == null) {
         continue;
       }
       
+      // Repair the item in the inventory using the ItemUtilities
       itemStacks[slot] = ItemUtilities.setItemDamage(itemStacks[slot], (short) 0);
     }
-    playerInventory.setContents(itemStacks);
     
-    //Log to Player
+    // Set the player's inventory contents as the new array.
+    playerInventory.setContents(itemStacks);
+  
+    // Tell the player that their items have been repaired.
     MessageUtilities.displayInfoMessage(player, "All of your items have been repaired.");
   }
   

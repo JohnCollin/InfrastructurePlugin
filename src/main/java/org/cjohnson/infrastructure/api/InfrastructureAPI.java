@@ -56,6 +56,7 @@ public class InfrastructureAPI {
       return false;
     }
     
+    // Define Class-Level Variables
     infrastructurePlugin = infrastructure;
     commandFramework = framework;
     

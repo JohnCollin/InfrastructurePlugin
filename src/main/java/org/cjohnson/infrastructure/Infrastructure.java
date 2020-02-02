@@ -38,19 +38,27 @@ public class Infrastructure extends JavaPlugin {
   
   @Override
   public void onEnable() {
+    // Log General Enabling Message to Console
     getLogger().info(MessageFormat.format("Enabling {0} {1}", Infrastructure.PLUGIN_NAME, Infrastructure.PLUGIN_VERSION));
     
+    // Check if the API is already initialized to act
+    // as a prevention from multiple instances.
     if(InfrastructureAPI.getInstance().isInitialized()) {
       getServer().getPluginManager().disablePlugin(this);
       throw new IllegalStateException("InfrastructureAPI is already initialized...");
     }
     
+    // Initialize CommandFramework
     CommandFramework commandFramework = new CommandFramework();
     
+    // Initialize API
     InfrastructureAPI.getInstance().initialize(this, commandFramework);
     
+    // Command Setup
     InfrastructureAPI.getInstance().getCommandFramework().addCommand(new CommandRepair(), "repair");
     
+    // Call method to handle any reloads
+    // if there had been a reload.
     handleReloads();
   }
   
