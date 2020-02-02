@@ -28,25 +28,47 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
+/**
+ * Infrastructure Item Utility Methods
+ *
+ * @since 0.1.0-ALPHA
+ */
 public abstract class ItemUtilities {
   
+  /**
+   * Set an item's durability to a desired amount
+   *
+   * @param itemStack The ItemStack to modify
+   * @param damage The new amount of damage
+   *
+   * @return The modified ItemStack
+   *
+   * @since 0.1.0-ALPHA
+   */
   public static ItemStack setItemDamage(ItemStack itemStack, short damage) {
+    // Buffer for items that have no ItemMeta
     if(!itemStack.hasItemMeta()) {
       return itemStack;
     }
     
+    // Get the ItemMeta from the ItemStack
     ItemMeta itemMeta = itemStack.getItemMeta();
     
+    // Buffer for items that are unbreakable
     if(itemMeta.isUnbreakable()) {
       return itemStack;
     }
     
+    // Cast the ItemMeta to a Damageable object
     Damageable damageable = (Damageable) itemMeta;
     
+    // Set the damage amount
     damageable.setDamage(damage);
     
+    // Recast back to ItemMeta
     itemMeta = (ItemMeta) damageable;
     
+    // Set the ItemStack's ItemMeta
     itemStack.setItemMeta(itemMeta);
     
     return itemStack;

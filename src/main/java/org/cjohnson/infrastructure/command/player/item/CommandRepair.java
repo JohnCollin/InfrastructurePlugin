@@ -56,6 +56,8 @@ public class CommandRepair {
    * @param subCommand The subcommand annotation passed by the CommandFramework
    * @param sender The CommandSender passed by the Bukkit API
    * @param args The command arguments passed by the Bukkit API
+   *
+   * @since 0.1.0-ALPHA
    */
   @DefaultCommand
   @SubCommand(aliases = {"hand"}, permission = "infrastructure.repair")
@@ -87,6 +89,8 @@ public class CommandRepair {
    * @param subCommand The subcommand annotation passed by the CommandFramework
    * @param sender The CommandSender passed by the Bukkit API
    * @param args The command arguments passed by the Bukkit API
+   *
+   * @since 0.1.0-ALPHA
    */
   @SubCommand(aliases = {"all"}, permission = "infrastructure.repair.all")
   public void allRepairCommand(SubCommand subCommand, CommandSender sender, String[] args) {
@@ -122,6 +126,8 @@ public class CommandRepair {
    * @param subCommand The subcommand annotation passed by the CommandFramework
    * @param sender The CommandSender passed by the Bukkit API
    * @param args The command arguments passed by the Bukkit API
+   *
+   * @since 0.1.0-ALPHA
    */
   @NoPermission
   public void noPermission(SubCommand subCommand, CommandSender sender, String[] args) {
@@ -135,6 +141,8 @@ public class CommandRepair {
    * @param subCommand The subcommand annotation passed by the CommandFramework
    * @param sender The CommandSender passed by the Bukkit API
    * @param args The command arguments passed by the Bukkit API
+   *
+   * @since 0.1.0-ALPHA
    */
   @NotPlayer
   public void notPlayer(SubCommand subCommand, CommandSender sender, String[] args) {
