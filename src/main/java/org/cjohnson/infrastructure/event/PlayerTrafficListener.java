@@ -28,6 +28,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.cjohnson.infrastructure.api.InfrastructureAPI;
+import org.cjohnson.infrastructure.player.InfraPlayer;
 
 /**
  * The Player Traffic Listener object that implements Listener to listen
@@ -39,12 +41,12 @@ public class PlayerTrafficListener implements Listener {
   
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
-  
+    InfrastructureAPI.getInstance().getPlayerHandler().addPlayer(new InfraPlayer(playerJoinEvent.getPlayer()));
   }
   
   @EventHandler
   public void onPlayerQuit(PlayerQuitEvent playerQuitEvent) {
-  
+    InfrastructureAPI.getInstance().getPlayerHandler().removePlayer(playerQuitEvent.getPlayer());
   }
   
 }
