@@ -26,6 +26,7 @@ package org.cjohnson.infrastructure.api;
 
 import org.cjohnson.infrastructure.Infrastructure;
 import org.cjohnson.infrastructure.command.CommandFramework;
+import org.cjohnson.infrastructure.player.InfraPlayerHandler;
 
 import java.util.logging.Logger;
 
@@ -65,6 +66,11 @@ public class InfrastructureAPI {
   private static CommandFramework commandFramework;
   
   /**
+   * Infrastructure's Player Handler and Player Registry
+   */
+  private static InfraPlayerHandler playerHandler;
+  
+  /**
    * InfrastructureAPI Singleton Constructor
    *
    * @since 0.1.0-ALPHA
@@ -98,7 +104,7 @@ public class InfrastructureAPI {
    *
    * @since 0.1.0-ALPHA
    */
-  public boolean initialize(Infrastructure infrastructure, CommandFramework framework) {
+  public boolean initialize(Infrastructure infrastructure, CommandFramework framework, InfraPlayerHandler infraPlayerHandler) {
     if(initialized) {
       return false;
     }
@@ -106,6 +112,7 @@ public class InfrastructureAPI {
     // Define Class-Level Variables
     infrastructurePlugin = infrastructure;
     commandFramework = framework;
+    playerHandler = infraPlayerHandler;
     
     return true;
   }
@@ -152,5 +159,16 @@ public class InfrastructureAPI {
    */
   public CommandFramework getCommandFramework() {
     return commandFramework;
+  }
+  
+  /**
+   * Getter for the Infrastructure Player Handler and Registry
+   *
+   * @return Infrastructure Player Handler and Registry
+   *
+   * @since 0.1.0-ALPHA
+   */
+  public InfraPlayerHandler getPlayerHandler() {
+    return playerHandler;
   }
 }

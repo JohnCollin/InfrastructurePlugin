@@ -28,6 +28,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.cjohnson.infrastructure.api.InfrastructureAPI;
 import org.cjohnson.infrastructure.command.CommandFramework;
 import org.cjohnson.infrastructure.command.player.item.CommandRepair;
+import org.cjohnson.infrastructure.player.InfraPlayerHandler;
 
 import java.text.MessageFormat;
 
@@ -66,8 +67,11 @@ public class Infrastructure extends JavaPlugin {
     // Initialize CommandFramework
     CommandFramework commandFramework = new CommandFramework();
     
+    // Initialize Player Registry
+    InfraPlayerHandler playerHandler = new InfraPlayerHandler();
+    
     // Initialize API
-    InfrastructureAPI.getInstance().initialize(this, commandFramework);
+    InfrastructureAPI.getInstance().initialize(this, commandFramework, playerHandler);
     
     // Command Setup
     InfrastructureAPI.getInstance().getCommandFramework().addCommand(new CommandRepair(), "repair");
