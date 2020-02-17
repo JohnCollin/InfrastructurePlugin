@@ -27,6 +27,7 @@ package org.cjohnson.infrastructure;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.cjohnson.infrastructure.api.InfrastructureAPI;
 import org.cjohnson.infrastructure.command.CommandFramework;
+import org.cjohnson.infrastructure.command.player.chat.CommandMsgToggle;
 import org.cjohnson.infrastructure.command.player.item.CommandRepair;
 import org.cjohnson.infrastructure.player.InfraPlayerHandler;
 
@@ -75,6 +76,7 @@ public class Infrastructure extends JavaPlugin {
     
     // Command Setup
     InfrastructureAPI.getInstance().getCommandFramework().addCommand(new CommandRepair(), "repair");
+    InfrastructureAPI.getInstance().getCommandFramework().addCommand(new CommandMsgToggle(), "msgtoggle");
     
     // Call method to handle any reloads
     // if there had been a reload.
